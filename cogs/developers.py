@@ -8,7 +8,7 @@ class Developers(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="eval", hidden=True, aliases=["e", "evaluate"])
+    @commands.command(name="eval", hidden=True, aliases=["e", "evaluate"], category="General")
     @commands.is_owner()
     async def _eval(self, ctx, *, code: str):
       fn_name = "_eval_expr"
@@ -33,8 +33,8 @@ class Developers(commands.Cog):
 
       result = (await eval(f"{fn_name}()", env))
       embed = discord.Embed(title=f"Evaluated code | {ctx.author.name}#{ctx.author.discriminator}", colour=ctx.author.colour)
-      embed.add_field(name="Input", value=f"```{code}```", inline=False)
-      embed.add_field(name="Output", value=f"```{result}```", inline=False)
+      embed.add_field(name="• Input", value=f"```{code}```", inline=False)
+      embed.add_field(name="• Output", value=f"```{result}```", inline=False)
       await ctx.send(embed=embed)
 
 
