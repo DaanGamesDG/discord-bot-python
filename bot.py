@@ -41,6 +41,9 @@ async def on_command_error(ctx, error):
         elif isinstance(error, commands.MissingPermissions):
             missing = ", ".join(Map(error.missing_perms)).replace("_", " ")
             response = f">>> 👮‍♂️ | Oops, you are missing `{missing}` permissions to continue."
+        elif isinstance(error, commands.BotMissingPermissions):
+            missing = ", ".join(Map(error.missing_perms)).replace("_", " ")
+            response = f">>> 👮‍♂️ | Oops, I am missing `{missing}` permissions to continue."
         elif isinstance(error, commands.MemberNotFound):
             response = f">>> 🔎 | Sorry I was unable to find a user with this information: \"{error.argument}\"."
         elif isinstance(error, commands.RoleNotFound):

@@ -10,6 +10,7 @@ class Moderation(commands.Cog):
 
     @commands.command(category="Moderation")
     @commands.bot_has_guild_permissions(kick_members=True)
+    @commands.has_guild_permissions(kick_members=True)
     async def kick(self, ctx: commands.Context, user: discord.Member, *, reason: str = "no reason given"):
       if user.id == ctx.author.id:
         return await ctx.send(">>> 🤷‍♂️ | Why do you want to kick yourself?")
