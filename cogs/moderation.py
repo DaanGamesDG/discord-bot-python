@@ -8,7 +8,7 @@ class Moderation(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(category="Moderation")
+    @commands.command(category="Moderation", usage="<user-ALL> [reason]", description="kick someone, uses the role hierarchy to see whether you are allowed to kick the user or not")
     @commands.bot_has_guild_permissions(kick_members=True)
     @commands.has_guild_permissions(kick_members=True)
     async def kick(self, ctx: commands.Context, user: discord.Member, *, reason: str = "no reason given"):
@@ -29,7 +29,7 @@ class Moderation(commands.Cog):
       except:
         dmed = False
       
-      await user.kick(reason=reason)
+      await user.kick(reason)
       if dmed:
         response = f">>> 👢 | Successfully kicked **{user.name}#{user.discriminator}**, reason: `{reason}`."
       else:
